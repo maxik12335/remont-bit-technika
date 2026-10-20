@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+#1A1A1A
+#FFFFFF
+#1a1a1abd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- код для меню которая подтсравивается под фон -->
+<!-- всё что нужно менять это
 
-## Available Scripts
+цвет фона меню:                        const [navColor, setNavColor] = useState('#FFFFFF'); 
+------------------------------------------------------------------------------------------
+цвет текста меню:                      const [textColor, setTextColor] = useState('#1A1A1A');
+------------------------------------------------------------------------------------------
+массив idк кому нужно применить стили: const darkIds = ['dark_1', 'dark_2']; 
+  (здесь нужно зайти в комонент и вставить id у верхнего div
+      например: <div className={classes.section} id="dark_1"> 
+  )
+------------------------------------------------------------------------------------------
+если хочется через :root стили, то надо сделать им доступ вот так:
+  // Получаем root css стили
+    const rootStyles = getComputedStyle(document.documentElement);
+  
+  // и сделать лучше 4 варианта чтобы не думать с инверсией
+    const lightBg = rootStyles.getPropertyValue('--bg-color').trim();  // #FFFFFF
+    const lightText = rootStyles.getPropertyValue('--text-color').trim(); // #1A1A1A
+    const darkBg = rootStyles.getPropertyValue('--bg-color-dark').trim();    // #1A1A1A
+    const darkText = rootStyles.getPropertyValue('--text-color-dark').trim(); // #FFFFFF
 
-In the project directory, you can run:
+  // сделать замену в 5 пункте мол если выбрана темная то темную, иначе подставить значения под белую тему
+    if (isCurrentlyOnDark) {
+      setNavColor(darkBg);
+      setTextColor(darkText);
+    } else {
+      setNavColor(lightBg);
+      setTextColor(lightText);
+    }
+ -->
 
-### `npm start`
+// Изначальное состояние: белый фон, темный текст
+  const [navColor, setNavColor] = useState('#FFFFFF'); 
+  const [textColor, setTextColor] = useState('#1A1A1A');
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  useEffect(() => {
+    let ticking = false;
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          // 1. Собираем все ID темных блоков в массив
+          const darkIds = ['dark_1', 'dark_2']; 
+          
+          // 2. Сразу ищем их в DOM
+          const darkBlocks = darkIds.map(id => document.getElementById(id));
 
-### `npm test`
+          // 3. Флаг по умолчанию
+          let isCurrentlyOnDark = false;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+          // 4. Проходим циклом по всем найденным блокам
+          darkBlocks.forEach(block => {
+            // Проверяем: существует ли блок И коснулся ли он навбара
+            if (block && block.getBoundingClientRect().top < 60) {
+              isCurrentlyOnDark = true;
+            }
+          });
 
-### `npm run build`
+          // 5. Ставим стили (здесь логика остается прежней)
+          if (isCurrentlyOnDark) {
+            setNavColor('#1A1A1A');
+            setTextColor('#FFFFFF');
+          } else {
+            setNavColor('#FFFFFF');
+            setTextColor('#1A1A1A');
+          }
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+<!-- --------------------------------------- -->
+<!-- метод по созданию из #fff222 в hsla с твоим значением  % -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  const procent = 0.08;
+  // Функция перевода (вставь её перед компонентом)
+  const hexToHsl = (hex) => {
+    let r = 0, g = 0, b = 0;
+    if (hex.length === 4) {
+      r = parseInt(hex[1] + hex[1], 16);
+      g = parseInt(hex[2] + hex[2], 16);
+      b = parseInt(hex[3] + hex[3], 16);
+    } else if (hex.length === 7) {
+      r = parseInt(hex.slice(1, 3), 16);
+      g = parseInt(hex.slice(3, 5), 16);
+      b = parseInt(hex.slice(5, 7), 16);
+    }
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    if (max === min) {
+      h = s = 0; // achromatic
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    const hslH = Math.round(h * 360);
+    const hslS = Math.round(s * 100);
+    const hslL = Math.round(l * 100);
+    
+    return [hslH, hslS, hslL];
+  };
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  const [h, s, l] = hexToHsl(textColor);
+  
+  // Собираем строку для границы: hsla(0, 0%, 10%, 0.08)
+  const borderColor = `hsla(${h}, ${s}%, ${l}%, ${procent})`;
