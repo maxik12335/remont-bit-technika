@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/remont-bit-technika/static/css/main.ca32a31c.css",
-    "main.js": "/remont-bit-technika/static/js/main.3f588845.js",
+    "main.css": "/remont-bit-technika/static/css/main.ac96c350.css",
+    "main.js": "/remont-bit-technika/static/js/main.0f9fef03.js",
     "index.html": "/remont-bit-technika/index.html",
-    "main.ca32a31c.css.map": "/remont-bit-technika/static/css/main.ca32a31c.css.map",
-    "main.3f588845.js.map": "/remont-bit-technika/static/js/main.3f588845.js.map"
+    "main.ac96c350.css.map": "/remont-bit-technika/static/css/main.ac96c350.css.map",
+    "main.0f9fef03.js.map": "/remont-bit-technika/static/js/main.0f9fef03.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca32a31c.css",
-    "static/js/main.3f588845.js"
+    "static/css/main.ac96c350.css",
+    "static/js/main.0f9fef03.js"
   ]
 }
