@@ -15,69 +15,65 @@ import img_12 from "../../assets/12.png"
 
 const Uslugy = () => {
   return (
-    <div className={classes.section} id="uslugy"> 
-      <div className={classes.container}>
-        <div className={classes.content}>
-          <div className={classes.tobBox}>
-            <h2 className={classes.title}>Услуги</h2>  
-            <p className={classes.subtitle}>
-              опыт работы больше 10 лет
-            </p>
-          </div>
+    <div className="section" id="uslugy"> 
+      <div className="container">
+        
+        <div className="content">
+          <h2 className="h2 line-dark-text">Услуги</h2>  
 
           <ul className={classes.list}>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_1} alt="img" />
-              <p className={classes.listTitle}>холодильники</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_1} alt="img" />
+              <p className="text-sm">холодильники</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_2} alt="img" />
-              <p className={classes.listTitle}>стиралки</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_2} alt="img" />
+              <p className="text-sm">стиралки</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_3} alt="img" />
-              <p className={classes.listTitle}>духовые шкафы</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_3} alt="img" />
+              <p className="text-sm">духовые шкафы</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_4} alt="img" />
-              <p className={classes.listTitle}>морозилка</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_4} alt="img" />
+              <p className="text-sm">морозилка</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_5} alt="img" />
-              <p className={classes.listTitle}>посудомойки</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_5} alt="img" />
+              <p className="text-sm">посудомойки</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_6} alt="img" />
-              <p className={classes.listTitle}>сушилки</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_6} alt="img" />
+              <p className="text-sm">сушилки</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_7} alt="img" />
-              <p className={classes.listTitle}>электроплиты</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_7} alt="img" />
+              <p className="text-sm">электроплиты</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_8} alt="img" />
-              <p className={classes.listTitle}>варочные панели</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_8} alt="img" />
+              <p className="text-sm">варочные панели</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_9} alt="img" />
-              <p className={classes.listTitle}>пылесосы</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_9} alt="img" />
+              <p className="text-sm">пылесосы</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_10} alt="img" />
-              <p className={classes.listTitle}>утюги</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_10} alt="img" />
+              <p className="text-sm">утюги</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_11} alt="img" />
-              <p className={classes.listTitle}>тепловентиляторы</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_11} alt="img" />
+              <p className="text-sm">тепловентиляторы</p>
             </li>
-            <li className={classes.listItem}>
-              <img className={classes.listImg} src={img_12} alt="img" />
-              <p className={classes.listTitle}>кондиционеры</p>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_12} alt="img" />
+              <p className="text-sm">кондиционеры</p>
             </li>
           </ul>
 
-          <p className={classes.downText}>
-            <span>пайка труб:</span> медь, сталь, пластик
+          <p className="text-base">
+            <span className="text-sm bold">пайка труб:</span> медь, сталь, пластик
           </p>
         </div>
         

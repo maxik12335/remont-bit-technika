@@ -1,0 +1,61 @@
+:root {
+  /* цвета */
+  --color-background: #f7f7f7;
+  --color-text: #1A1A1A;
+  --color-background-dark: #1A1A1A;
+  --color-text-dark: #f7f7f7;
+
+  /* hover */
+  --color-hover-opacity: 0.7;
+  --line-border-bottom: 1px solid rgba(26, 26, 26, 0.05);
+
+  /* font-family */
+  /* Montserrat Inter Manrope. */
+  --font-family: "Montserrat", sans-serif;
+
+  /* font-size */  
+  --text-size-h1: 64px; /* 64px/48px */
+  --text-size-h2: 32px; 
+  --text-size-h3: 24px; 
+  --text-size-base: 18px; 
+  --text-size-small: 16px; 
+
+  /* font-weight */
+  --text-weight-main-title: 700;
+  --text-weight-title: 600;
+  --text-weight-accent: 500;
+  --text-weight-base: 400;
+
+  /* letter-spacing */
+  --text-tracking-base: 0.2px;
+  --text-tracking-title: 0.5px;
+
+  /* line-height */
+  --text-height-base: 1.6;
+  --text-height-title: 1.2;
+
+  /* border-radius */
+  --radius-base: 8px;
+  --radius-sm: 4px;
+
+  /* transition */
+  --transition-base: 0.2s ease;
+  --transition-long: 0.3s ease;
+
+  /* box-shadow */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05);
+
+  /* отступы */
+  --space-0: 0px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px; /* Самый частый отступ: между заголовком и текстом */
+  --space-5: 40px;
+  --space-6: 48px; /* Отступ секции сверху/снизу */
+  --space-7: 56px;
+  --space-8: 64px;
+
+}

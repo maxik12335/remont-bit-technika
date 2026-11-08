@@ -7,28 +7,32 @@ import img_4 from '../../assets/jobs/4.png'
 
 const Job = () => {
   return (
-    <div className={`${classes.section} section--dark`}> 
-      <div className={classes.container}>
-        <h2 className={classes.title}>как мы работаем</h2>
+    <div className="section--dark"> 
+      <div className="container">
 
-        <ul className={classes.list}>
-          <li className={classes.item}>
-            <img className={classes.img} src={img_1} alt="img" />
-            <p className={classes.itemTitle}>звоните</p>
-          </li>
-           <li className={classes.item}>
-            <img className={classes.img} src={img_2} alt="img" />
-            <p className={classes.itemTitle}>считаем цену</p>
-          </li>
-           <li className={classes.item}>
-            <img className={classes.img} src={img_3} alt="img" />
-            <p className={classes.itemTitle}>назначаем время</p>
-          </li>
-           <li className={classes.item}>
-            <img className={classes.img} src={img_4} alt="img" />
-            <p className={classes.itemTitle}>выезжаем</p>
-          </li>
-        </ul>
+        <div className="content">
+          <h2 className="h2 line-light-text">как мы работаем</h2>
+
+          <ul className={classes.list}>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_1} alt="img" />
+              <p className="text-sm">звоните</p>
+            </li>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_2} alt="img" />
+              <p className="text-sm">считаем цену</p>
+            </li>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_3} alt="img" />
+              <p className="text-sm">назначаем время</p>
+            </li>
+            <li className={classes.item}>
+              <img className={classes.img} src={img_4} alt="img" />
+              <p className="text-sm">выезжаем</p>
+            </li>
+          </ul>
+        </div>
+        
       </div>
     </div>
   )
